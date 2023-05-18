@@ -1,16 +1,21 @@
-const App = () => {
-    return (
-        <div>
-            <nav>
-                <div className="nav-wrapper">
-                    <a href="#" className="brand-logo center">Logo</a>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><a href="/auth/google">Login with Google</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+import { Component } from "react";
+import Header from "./components/Header"
+import { connect } from "react-redux";
+import * as actions from "./actions"
 
-    )
+class App extends Component {
+    componentDidMount() {
+        this.props.fetchUser()
+    }
+
+
+    render() {
+        return (
+            <div>
+                <Header />
+            </div>
+        )
+    }
 }
-export default App
+
+export default connect(null, actions)(App)
